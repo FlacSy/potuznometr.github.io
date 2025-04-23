@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.progress-container {
+    width: 100%;
+    height: 30px;
+    background-color: #333;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        #3498db 0%, 
+        #2ecc71 20%, 
+        #f1c40f 40%, 
+        #e67e22 60%, 
+        #e74c3c 80%, 
+        #c0392b 100%);
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 15px;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.1s ease-out;
+}
+
+.power-button {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(85, 77, 77, 0.7), rgba(167, 164, 164, 0.7));
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    transition: transform 0.1s, box-shadow 0.1s;
+    margin-bottom: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.power-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+.result-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff6b6b;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+.result-text.visible {
+    opacity: 1;
+    animation: shakeY 0.5s cubic-bezier(.36,.07,.19,.97) infinite;
+}
+
+@keyframes shakeY {
+    0%, 100% { transform: translateY(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateY(-5px); }
+    20%, 40%, 60%, 80% { transform: translateY(5px); }
+}
+
+.shake-y {
+    animation: shakeY 0.5s cubic-bezier(.36,.07,.19,.97) infinite;
+}
+
+@media (max-width: 480px) {
+    .power-button {
+        width: 100px;
+        height: 100px;
+        font-size: 18px;
+    }
+
+    .result-text {
+        font-size: 24px;
+    }
+}
